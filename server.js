@@ -4,10 +4,24 @@ const HOST = "127.0.0.1";
 
 const server = net.createServer();
 
+const userList = ["Wendell", "Raymond", "Dena"];
 const css = "HTTP/1.1 200 OK\nContent-Type: text/html\n\nh1 {color: red;}";
 
 const UserPageComponent = () =>
-  "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><head><link rel='stylesheet' href='styles.css'></head><body><h1>Hello User</h1><a href='/home'>Go Home</a></body><script></script></html>";
+  {
+    const users = userList.map( user => {
+        return `<a href='/${user}'>${user}</a>`
+    })
+
+    const userLinks = users.join("")
+
+    console.log('userLinks', userLinks)
+    return `HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><head><link rel='stylesheet' href='styles.css'>
+    </head>
+        <body>
+            <h1>${userLinks}</h1><a href='/home'>Go Home</a>
+        </body>
+    </html>`;}
 const LoginPageComponent = () =>
   "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><body><h1>Login, Fool</h1></body></html>";
 const HomePageComponent = () =>
@@ -38,7 +52,7 @@ server.on("connection", (socket) => {
       case "/styles.css":
         console.log(css);
         socket.write(css);
-        break
+        break;
       default:
         socket.write(ErrorPageComponent());
     }
