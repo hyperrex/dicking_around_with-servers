@@ -7,21 +7,14 @@ const server = net.createServer();
 const userList = ["Wendell", "Raymond", "Dena"];
 const css = "HTTP/1.1 200 OK\nContent-Type: text/html\n\nh1 {color: red;}";
 
-const UserPageComponent = () =>
-  {
-    const users = userList.map( user => {
-        return `<a href='/${user}'>${user}</a>`
-    })
-
-    const userLinks = users.join("")
-
-    console.log('userLinks', userLinks)
-    return `HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><head><link rel='stylesheet' href='styles.css'>
-    </head>
-        <body>
-            <h1>${userLinks}</h1><a href='/home'>Go Home</a>
-        </body>
-    </html>`;}
+const UserPageComponent = () => {
+  const users = userList.map((user) => {
+    return `<a href='/${user}'>${user}</a>`;
+  });
+  const userLinks = users.join("");
+  console.log("userLinks", userLinks);
+  return `HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><head><link rel='stylesheet' href='styles.css'></head><body><h1>${userLinks}</h1><a href='/home'>Go Home</a></body></html>`;
+};
 const LoginPageComponent = () =>
   "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><body><h1>Login, Fool</h1></body></html>";
 const HomePageComponent = () =>
