@@ -7,7 +7,7 @@ const server = net.createServer();
 const css = "HTTP/1.1 200 OK\nContent-Type: text/html\n\nh1 {color: red;}";
 
 const UserPageComponent = () =>
-  "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><head><link rel='stylesheet' href='styles.css'></head><body><h1>Hello User</h1></body><script></script></html>";
+  "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><head><link rel='stylesheet' href='styles.css'></head><body><h1>Hello User</h1><a href='/home'>Go Home</a></body><script></script></html>";
 const LoginPageComponent = () =>
   "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><body><h1>Login, Fool</h1></body></html>";
 const HomePageComponent = () =>
